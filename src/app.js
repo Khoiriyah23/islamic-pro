@@ -8,6 +8,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const adminAuth = require("./middleware/admin.middleware")
+require('dotenv').config();
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/islamic_pro")
@@ -65,6 +66,6 @@ app.get("/admin/profile",adminAuth, profilePage);
 app.post("/admin/logout", logOut)
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("App is running steadily");
 });
