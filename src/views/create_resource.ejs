@@ -1,0 +1,77 @@
+<%- include("./layout/header.ejs") %>
+    <h2 class="add-res">Add Resource</h2>
+    <p class="error"><%= error %></p>
+    <div class="form">
+        <form action="/books" method="POST"  encType="multipart/form-data">
+            <div>     
+                 <label for="srcName">
+                     <p>Author Name</p>
+                 </label>
+                 <input type="text" name="srcName" id="srcName" value="<%= form[0]?.srcName %>">
+            </div>
+
+            <div>     
+                <label for="title">
+                    <p>Title</p>
+                </label>
+                <input type="text" name="title" id="title" value="<%= form[0]?.title %>">
+           </div>
+
+           <div>     
+                 <label for="numberOfPages">
+                     <p>Number of pages</p>
+                 </label>
+                 <input type="number" name="numberOfPages" id="numberOfPages" value="<%= form[0]?.numberOfPages %>">
+            </div>
+
+            <div>     
+                <label for="datePublished">
+                    <p>Date Published</p>
+                </label>
+                <input type="date" name="datePublished" id="datePublished" value="<%= form[0]?.datePublished %>">
+          </div>
+
+      
+         <div>     
+           <label for="dateUpdated">
+               <p>Date Updated</p>
+           </label>
+           <input type="date" name="dateUpdated" id="" value="<%= form[0]?.dateUpdated %>">
+        </div>
+
+        <div>     
+            <label for="description">
+                <p>Description</p>
+            </label>
+            <input type="text" name="description" placeholder="Enter few word of description" value="<%= form[0]?.description %> " >
+         </div>
+
+        <div>     
+            <label for="subjects">
+                <p>Subjects</p>
+            </label>
+            <input type="text" name="subjects" placeholder="single words seperated by comma (3 tags max)" value="<%= form[0]?.subjects %>">
+         </div>
+
+         <div>     
+            <label for="file">
+                <p>File</p>
+            </label>
+            <input type="file" name="file" >
+        </div>
+
+        <div>     
+            <label for="imageUrl">
+                <p>Image Url</p>
+            </label>
+            <input type="text" name="imageUrl" id="" value="<%= form[0]?.imageUrl %>">
+        </div>
+
+        <input type="submit" value="Create Resource" class="btn4" style="font-family: myFont;">
+
+        </form>
+    </div>
+
+
+
+<%- include("./layout/footer.ejs") %>

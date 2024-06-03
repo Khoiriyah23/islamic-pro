@@ -1,0 +1,82 @@
+<%- include("./layout/header.ejs") %>
+
+    <main>
+        <div class="fln">
+            <h2>Welcome Back, <%= profile.firstName %> <%= profile.lastName %></h2>
+        </div>
+        
+        
+        <div>
+            <a href="/books/new" class="btn2" style="text-decoration: none;">
+                Add Resource
+            </a>
+
+            <a href="/books" class="btn2" style="text-decoration: none;">view resource</a> 
+
+            
+        </div>
+        <form action="/admin/logout" method="post" onsubmit="return confirm('Are you by chance Logging Out?')" class="flog">
+                        <button type="submit" class="logout" style="width: 150px;">Log Out</button>
+                    </form>
+            <hr>
+            <hr>
+        <h2>My Resource</h2> 
+        <section>
+            
+        <% books.forEach(function(book, index) { %>
+
+            <div class="container">
+               
+                <div class="container-logo">
+                   <img src="<%= book.imageUrl %>" alt="">
+                </div>
+   
+                <div class="sub-container">
+   
+                    <div class="sub-sub-container1">
+   
+                        <ul class="first-list">
+                            <li><%= book.srcName %></li>
+                        </ul>
+                    
+                        <ul class="second-list">
+                           <li><%= book.title %></li>
+                           <li><%= book.file %></li>
+   
+   
+                        </ul>
+                    
+                        <ul class="third-list">
+                           <li><%= book.numberOfPages %></li>
+                           <li>|</li>
+                           <li><%= book.datePublished %></li>
+                           <li>|</li>
+                           <li><%= book.dateUpdated %></li>
+                           <li>|</li>
+                           <li><%= book.description %></li>
+   
+                        </ul>
+                    </div>
+   
+                    <div class="sub-sub-container2">
+                        <ul class="sub-2-list">
+                          <% 
+    
+                          let subjectsArray = book.subjects.split(','); 
+                          subjectsArray.forEach(subject => { %>
+                            <li><%= subject.trim() %></li>
+                          <% }); %>
+                        </ul>
+                      </div>
+   
+           </div>
+
+           <a href="/books/<%= book._id %>" class="btn" style="text-decoration: none;">View resource</a>
+
+       </div>
+         <% }) %>
+        </section>
+    </main>
+
+
+    <%- include("./layout/footer.ejs") %>

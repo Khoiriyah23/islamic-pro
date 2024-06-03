@@ -1,0 +1,76 @@
+<%- include("./layout/header.ejs") %>
+<a href="/books" class="btn3 back-link" style="left: 0; margin-left: 20px;">
+    &larr;
+</a>
+    <main>
+         <div class="first">
+            
+             <div class="container-logo-1">
+                <img src="<%= book.imageUrl %>" alt="Book" >
+             </div>
+
+             <div class="sub-container-1">
+
+                 <div class="sub-sub-container-1">
+
+                     <ul class="first-list-1">
+                      <li><%= book.title %></li>
+                     </ul>
+                 
+                     <ul class="second-list-1">
+                      <li><%= book.description %></li> 
+                      <li>Author name: <%= book.srcName %></li>
+                      <li><%= book.file %></li>
+                     </ul>
+                 
+                     <ul class="third-list-1">
+                        <li><%= book.numberOfPages %> pages</li>
+                        <li>Published on : <%= book.datePublished %></li>
+                        <li>Updated on : <%= book.dateUpdated %></li>
+                     </ul>
+                 </div>
+
+                 <div class="sub-sub-container-2">
+                    <ul class="sub-2-list">
+                      <% 
+                      // Assuming book.subjects contains the comma-separated string of subjects
+                      let subjectsArray = book.subjects.split(','); // Split the string into an array
+                      subjectsArray.forEach(subject => { %>
+                        <li><%= subject.trim() %></li>
+                      <% }); %>
+                    </ul>
+                  </div>
+                  
+
+        </div>
+
+        <!-- ... (other HTML content) ... -->
+
+<div class="resource-actions">
+    <% if (book.file) { %>
+      <a href="/uploads/<%= book.file %>" class="download-link" download>Download Resource</a>
+    <% } else { %>
+      <p>No file available for download.</p>
+    <% } %>
+  
+    <% if(adminSession && adminSession === book.admin.toString()) { %>
+      <a href="/books/<%= book._id %>/edit" class="update-link">Update Resource</a>
+  
+      <form action="/books/<%= book._id %>?_method=DELETE"
+            method="post"
+            class="delete-form"
+            onsubmit="return confirm('Are you sure you want to delete the resource')">
+        <button type="submit">Delete Resource</button>
+      </form>
+    <% } %>
+  </div>
+  
+  <!-- ... (other HTML content) ... -->
+  
+        
+         
+    </div>
+    </main>
+
+
+    <%- include("./layout/footer.ejs") %>

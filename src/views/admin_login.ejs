@@ -1,0 +1,37 @@
+<%- include("./layout/header.ejs") %>
+    <h2 class="add-res">Admin Log in</h2>
+    <p class="error"><%= error %></p>
+    <div>
+        <!-- <a href="/books" class="btn2 vres">View Resource </a> -->
+
+    </div> 
+    <div class="form">
+        <form action="/admin/login" method="POST" >
+            <div>     
+                 <label for="email">
+                     <p>Email Address</p>
+                 </label>
+                 <input type="email" name="email" id="email" value="<%= form[0]?.email %>">
+            </div>
+           
+
+            <div>     
+                 <label for="password">
+                     <p>Password</p>
+                 </label>
+                 <input type="password" name="password" id="password" value="">
+            </div>
+            <div class="login-1">
+                 <input type="submit" value="Log in" class="btn4 login-1" style="width: 100px;">
+            <a href="/books" class="" style="margin-top: 20px; text-decoration: none; color: black; font-family: myFont; font-size: 1.3rem;">
+                View resource &rarr;
+            </a>
+            
+            </div>
+           
+        </form>
+    </div>
+
+
+
+<%- include("./layout/footer.ejs") %>
