@@ -1,6 +1,6 @@
 const Admin = require("../models/admin.model")
 const Book = require("../models/book.model")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 const signupPage = (req, res) => {
     res.render("admin_signup", {error: req.flash("error"), form: req.flash("formData")});
